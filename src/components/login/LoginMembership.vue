@@ -1,8 +1,8 @@
 <template>
   <!-- 회원가입 화면 -->
-  <login-logo class="logo">
+  <flody-logo-vue class="logo">
 
-  </login-logo>
+  </flody-logo-vue>
   <br>
   <b-container>
     <b-row class="justify-content-md-center">
@@ -78,10 +78,10 @@
 
 <script>
 import { registMember, userIdDuplicated } from '@/api/member.js';
-import LoginLogoVue from './LoginLogo.vue';
+import FlodyLogoVue from '../FlodyLogo.vue';
 
 export default {
-  components : [LoginLogoVue],
+  components : {FlodyLogoVue},
   data() {
     return {
       user: {

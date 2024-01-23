@@ -1,6 +1,6 @@
 //import jwt_decode from "vue-jwt-decode";
 import { login } from "@/api/member.js";
-import { getUserInfo } from "../../api/member";
+//import { getUserInfo } from "../../api/member";
 import { get_goals } from "@/api/goal.js";
 import { api } from "@/api";
 import { get_user_schedule_ofDay } from "@/api/schedule";
@@ -57,7 +57,6 @@ const memberStore = {
   actions: {
     async userConfirm({ commit }, user) {
       // axios 작업
-      console.log("login 시작");
       await login(
         user,
         (response) => {
@@ -78,7 +77,6 @@ const memberStore = {
         },
         () => {},
       );
-      console.log("login 끝");
     },
 
     setLogout({ commit }) {
@@ -90,8 +88,9 @@ const memberStore = {
 
     async getUserInfo({ commit }, token) {
       //let decode_token = jwt_decode(token);
-      console.log(token);
-      // axios 필요
+      console.log("token : "+token);
+      // axios 통신 임시로 처리
+      /*
       await getUserInfo(
         //decode_token.userid,
         token,
@@ -110,6 +109,8 @@ const memberStore = {
           console.log(error);
         },
       );
+      */
+      commit("SET_USER_INFO", token);
     },
 
     setgoals({ commit }) {

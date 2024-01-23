@@ -1,5 +1,5 @@
 <template>
-  <login-logo class="logo"></login-logo>
+  <flody-logo-vue></flody-logo-vue>
   <br />
   <b-container>
     <b-row class="justify-content-md-center">
@@ -60,11 +60,11 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 // import LoginRegister from "./LoginRegister.vue";
-import LoginModalFind from "./modal/LoginModalFind.vue";
-import LoginLogo from './LoginLogo.vue';
+import LoginModalFind from "./modal/LoginModalFind.vue"; 
+import FlodyLogoVue from '../FlodyLogo.vue';
 
 export default {
-  components: { LoginModalFind,LoginLogo }, //LoginRegister,
+  components: {LoginModalFind,FlodyLogoVue}, //LoginRegister,
   data() {
     return {
       fields: ["first_name", "last_name", "show_details"],
@@ -99,6 +99,7 @@ export default {
       alert("입력한 아이디 : "+this.user.email+" , 패스워드 : "+this.user.password);
       this.store.dispatch("memberStore/getUserInfo", this.user.email); // 정보를 받아서 vuex의 user에 저장한다.
       const userInfo = this.store.state.memberStore.userInfo;
+      console.log(userInfo);
       this.store.dispatch("newspidStore/set_profile", userInfo);
       this.$router.push("/about"); // 라우터 페이지 이동
     },
@@ -114,9 +115,6 @@ export default {
       this.idfind = false;
     }
   },
-  mounted() {
-    console.log(this.isLogin);
-  }
 };
 </script>
 
