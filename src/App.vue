@@ -41,12 +41,12 @@ a.router-link-exact-active {
 }
 
 #app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 80vh;
 	font-family: basic-scans, sans-serif;
 	font-size: 1em;
 	line-height: 1.6;
-	margin: 0;
-	min-height: 100%;
-	position: relative;
-	padding-bottom: 133px;
 }
 </style>
