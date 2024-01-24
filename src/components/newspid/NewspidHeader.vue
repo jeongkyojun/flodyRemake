@@ -1,6 +1,6 @@
 <template>
   <!-- <div v-if="clickNickname == ' '"></div> -->
-  <b-container v-if="profile.email != userInfo.email">
+  <b-container v-if="profile.email != userInfo.email" class="profile">
     <br>
     <b-row style="margin-bottom:27px">
       <b-col cols="3" style="padding: 0px; text-align: center;">
@@ -64,7 +64,7 @@
   </b-container>
   <!-- <hr> -->
 
-  <b-container v-else-if="profile.email == userInfo.email">
+  <b-container v-else-if="profile.email == userInfo.email" class="profile">
     <br>
     <!-- <b-row align-v="center"> -->
     <b-row style="margin-bottom:27px">
@@ -186,6 +186,10 @@ export default {
 </script>
 
 <style>
+
+#profile{
+}
+
 .person {
   text-align: left;
 }

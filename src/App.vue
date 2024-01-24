@@ -44,7 +44,6 @@ a.router-link-exact-active {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 80vh;
 	font-family: basic-scans, sans-serif;
 	font-size: 1em;
 	line-height: 1.6;
