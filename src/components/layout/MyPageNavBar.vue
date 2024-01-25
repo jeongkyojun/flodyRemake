@@ -1,5 +1,5 @@
 <template>
-  <b-card style="max-width: 20rem; background-color: #F8F3F3;" class="p-0">
+  <b-card id="myPageCard" class="p-0">
     <b-container>
       <b-row>
         <b-col cols="3">
@@ -69,7 +69,6 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import { add_goal } from "@/api/goal.js";
 
 import MyPageItems from './items/MyPageItems.vue';
 
@@ -118,7 +117,7 @@ export default {
       }
       this.store.dispatch("newspidStore/setprofile", data);
     },
-    async addPlans() {
+    addPlans() {
       console.log(this.name);
       console.log(this.dueDate);
       const data = {
@@ -127,6 +126,7 @@ export default {
       };
       this.name = "";
       this.dueDate = null;
+      /*
       await add_goal(
         data,
         ({ data }) => {
@@ -140,10 +140,12 @@ export default {
         (error) => {
           console.log(error);
         });
+      */
+      this.store.dispatch("memberStore/addGoals",data);
     },
     async getPlans() {
       // 여기서 axios를 통해 목표를 받아온다.
-      await this.store.dispatch("memberStore/setgoals");
+      await this.store.dispatch("memberStore/setGoals");
     },
   },
   mounted() {
@@ -154,6 +156,14 @@ export default {
 </script>
 
 <style>
+
+#myPageCard {
+  width: 18.5rem; 
+  height: 11.5rem;
+  background-color: #F8F3F3;
+  margin-top: 0.5rem;
+}
+
 .test_name {
   text-align: right;
 }

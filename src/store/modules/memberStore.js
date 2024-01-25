@@ -1,7 +1,7 @@
 //import jwt_decode from "vue-jwt-decode";
 import { login } from "@/api/member.js";
 //import { getUserInfo } from "../../api/member";
-import { get_goals } from "@/api/goal.js";
+//import { get_goals } from "@/api/goal.js";
 import { api } from "@/api";
 import { get_user_schedule_ofDay } from "@/api/schedule";
 // 회원가입 및 로그인을 수행하는 js파일
@@ -32,6 +32,9 @@ const memberStore = {
     checkUserInfo: function (state) {
       return state.userInfo;
     },
+    getGoals: function(state){
+      return state.goals;
+    }
   },
   mutations: {
     SET_IS_LOGIN: (state, isLogin) => {
@@ -88,18 +91,12 @@ const memberStore = {
 
     async getUserInfo({ commit }, token) {
       //let decode_token = jwt_decode(token);
-      console.log("token : "+token);
-      // axios 통신 임시로 처리
       /*
       await getUserInfo(
         //decode_token.userid,
         token,
         (response) => {
-          console.log("여기까지는 온다");
-          console.log(response.data.msg);
           if (response.data.msg === "SUCCESS") {
-            console.log("확인");
-            console.log(response.data.item);
             commit("SET_USER_INFO", response.data.item);
           } else {
             console.log("유저 정보 없음!!");
@@ -110,10 +107,21 @@ const memberStore = {
         },
       );
       */
-      commit("SET_USER_INFO", token);
+      const data = {
+        email: token,
+        profile: "https://placekitten.com/300/800",
+        name: "정교준",
+        nickname: "고양고양이",
+        followers: [],
+        followings: [],
+        posts: [],
+        introduction: "고양이를 좋아하는 고양고양이입니다",
+      }
+      commit("SET_USER_INFO", data);
     },
 
-    setgoals({ commit }) {
+    setGoals({ commit }) {
+      /*
       get_goals(
         (success) => {
           console.log("목표 전달 응답 확인");
@@ -130,7 +138,26 @@ const memberStore = {
           console.log(error);
         },
       );
+      */
+      const data = [
+        {
+          title: "정보처리기사",
+          dueDate: "2024-09-01",
+        },
+        {
+          title: "OPIC",
+          dueDate: "2024-08-30",
+        },
+      ];
+      commit("SET_GOALS",data);
     },
+    addGoals({commit},newGoalData){
+      const data = this.getters.getGoals();
+      console.log(data);
+      data.add(newGoalData);
+      commit("SET_GOALS",data);
+    }
+    ,
     async set_todo_list({ commit }, selectedDate) {
       console.log(selectedDate);
       await get_user_schedule_ofDay(

@@ -10,7 +10,16 @@ const newspidStore = {
     follows: [],
     followers: [],
     selectedPid: {},
-    profile: {},
+    profile: {
+      email: "administer@ssafy.com",
+      profile: "https://placekitten.com/300/800",
+      name: "홍길동",
+      nickname: "고양고양이",
+      followers: [],
+      followings: [],
+      posts: [],
+      introduction: "hello world",
+    },
     newspids: [
       {
         pidNo: 0,
