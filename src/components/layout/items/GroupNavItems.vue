@@ -2,7 +2,7 @@
     <b-row style="text-align: left; margin-bottom: 10px;">
         <details>
             <summary style="font-weight: bold; margin-top: 7px;">
-                {{ groName }}
+                {{ name }}
                 <!-- <b-button size="sm" variant="link" @click="gotoPage('/group')">
                     <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -21,7 +21,7 @@
             </summary>
 
             <ul style="list-style: none;">
-                <group-items v-for="item in memberList" :key="item" v-bind="item"></group-items>
+                <group-items v-for="item in groups" :key="item" v-bind="item"></group-items>
             </ul>
         </details>
     </b-row>
@@ -37,8 +37,8 @@ export default {
     },
     props: {
         groNo: Number,
-        groName: String,
-        memberList: Array,
+        name: String,
+        groups: Array,
     },
     data() {
         return {
@@ -52,8 +52,8 @@ export default {
         gotoPage() {
             const data = {
                 groNo: this.groNo,
-                name: this.groName,
-                memberList: this.memberList,
+                name: this.name,
+                memberList: this.group,
             };
             console.log(data);
             this.store.dispatch("groupStore/selectGroups", data);

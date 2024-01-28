@@ -38,7 +38,6 @@ export default{
 	flex-direction: column;
 	justify-content: center;
   width: 80rem;
-  border: 1px solid blue;
 	font-family: basic-scans, sans-serif;
 	font-size: 1em;
 	line-height: 1.6;

@@ -16,7 +16,7 @@
         </b-col>
       </b-row>
       <hr style="margin: 5px;" />
-      <group-nav-items v-for="group in myGroupItem" :key="group" v-bind="group">
+      <group-nav-items v-for="group in group_items" :key="group" v-bind="group">
 
       </group-nav-items>
 
