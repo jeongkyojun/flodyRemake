@@ -1,8 +1,12 @@
 <template>
   <div class="navApp">
-    <router-link :to="{name: 'newspid'}">
-      <flody-logo-vue></flody-logo-vue>
-    </router-link>
+    <div>
+      <div id="logo">
+        <router-link :to="{name: 'newspid'}">
+          <flody-logo-vue></flody-logo-vue>
+        </router-link>
+      </div>
+    </div>
     <div class="navbars">
       <b-row>
         <b-col class="navbar" cols="2">
@@ -47,7 +51,6 @@ export default {
 </script>
 
 <style>
-
 .navApp{
   display: flex;
   flex-direction: row;
@@ -62,15 +65,6 @@ export default {
 nav .navbar-nav a.router-link-active {
   color: #064635;
   font-weight: bold;
-}
-
-.navLogo {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 20rem;
-  height: 8rem;
 }
 
 .navbar {

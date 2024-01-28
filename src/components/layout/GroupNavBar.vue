@@ -1,27 +1,29 @@
 <template>
-  <div style="margin-top:12px;"></div>
-  <b-card style="max-width: 20rem; max-height: 45rem; background-color: #f8f3f3; min-height:1090px;" class="mb-2">
-    <b-container>
-      <b-row>
-        <b-col style="text-align: left; padding: 6px 12px;">
-          <b-card-text style="font-weight: bold; color: #786666">현재 스터디 목록</b-card-text>
-        </b-col>
-        <b-col cols="2">
-          <b-button class="plus_button" variant="link" style="color:brown; text-decoration: none; font-weight: 600;"
-            size="sm" @click="gotoPage('/club')"><svg width="24" height="24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 5v14m-7-7h14" stroke="#444" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg></b-button>
-        </b-col>
-      </b-row>
-      <hr style="margin: 5px;" />
-      <group-nav-items v-for="group in group_items" :key="group" v-bind="group">
+  <div id="groupCard" >
+    <b-card style="width: 18.5rem; height: 100%; background-color: #f8f3f3; " class="mb-2">
+      <b-container>
+        <b-row>
+          <b-col style="text-align: left; padding: 6px 12px;">
+            <b-card-text style="font-weight: bold; color: #786666">현재 스터디 목록</b-card-text>
+          </b-col>
+          <b-col cols="2">
+            <b-button class="plus_button" variant="link" style="color:brown; text-decoration: none; font-weight: 600;"
+              size="sm" @click="gotoPage('/club')"><svg width="24" height="24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5v14m-7-7h14" stroke="#444" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></b-button>
+          </b-col>
+        </b-row>
+        <hr style="margin: 5px;" />
+        <div id="groupLists">
+          <group-nav-items v-for="group in group_items" :key="group" v-bind="group">
 
-      </group-nav-items>
-
-    </b-container>
-  </b-card>
+          </group-nav-items>
+        </div>
+      </b-container>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -56,7 +58,14 @@ export default {
             {
               id: 'Cinderella',
               src: 'https://placekitten.com/300/100',
-            }
+            },{
+              id: 'Mr_Jackson',
+              src: "https://placekitten.com/300/250",
+            },
+            {
+              id: 'Flyng_Cup',
+              src: "https://placekitten.com/300/240",
+            },
           ]
         },
         {
@@ -111,6 +120,22 @@ export default {
 </script>
 
 <style>
+
+#groupCard{
+  margin-top: 1rem;
+}
+
+#groupLists{
+  overflow: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  min-height: 30rem;
+  max-height: 48rem;
+}
+
 #move {
   margin-bottom: 3px;
 }

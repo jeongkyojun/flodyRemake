@@ -1,8 +1,6 @@
 <template>
-  <b-card style="max-width:35rem; border-color: #a48282;">
-    <v-calendar is-expanded :attributes="attributes" @dayclick="onDayClick" @update:from-page="onUpdatePage"
-      @update:to-page="onUpdatePageTo" @dayfocusin="onDayFocusIn" @dayfocusout="onDayFocusOut"
-      @transition-start="onTransitionStart" @transition-end="onTransitionEnd"></v-calendar>
+  <b-card style="max-width:35rem; border-color: #a48282; align-items: center;">
+    <v-calendar is-expanded :attributes="attributes" @dayclick="onDayClick"></v-calendar>
   </b-card>
 </template>
 
@@ -29,42 +27,9 @@ export default {
     return { store, todos, todo_list };
   },
   methods: {
-    // 참고 : https://vcalendar.io/examples/datepickers.html
     onDayClick(day) {
       this.store.dispatch("memberStore/set_selectedDate", day.id);
       this.store.dispatch("memberStore/set_todo_list", day.id);
-    },
-    onUpdatePage(data) {
-      //console.log("update:from-page");
-      console.log(data);
-    },
-    onUpdatePageTo(data) {
-      //console.log("update:to-page");
-      console.log(data);
-    },
-    onMouseEnter(data) {
-      //console.log("mouseEnter");
-      console.log(data);
-    },
-    onMouseLeave(data) {
-      //console.log("mouseLeave");
-      console.log(data);
-    },
-    onDayFocusIn(data) {
-      //console.log("focusIn");
-      console.log(data);
-    },
-    onDayFocusOut(data) {
-      //console.log("focusOut");
-      console.log(data);
-    },
-    onTransitionStart(data) {
-      //console.log("transitionStart");
-      console.log(data);
-    },
-    onTransitionEnd(data) {
-      //console.log("transitionEnd");
-      console.log(data);
     },
   },
   mounted() {

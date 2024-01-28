@@ -30,9 +30,10 @@
         </b-col>
       </b-row>
       <hr>
-
-      <my-page-items v-for="plan in plans" :key="plan" v-bind="plan">
-      </my-page-items>
+      <div id="myGoals">
+        <my-page-items v-for="plan in plans" :key="plan" v-bind="plan">
+        </my-page-items>
+      </div>
     </b-container>
   </b-card>
 
@@ -118,10 +119,8 @@ export default {
       this.store.dispatch("newspidStore/setprofile", data);
     },
     addPlans() {
-      console.log(this.name);
-      console.log(this.dueDate);
       const data = {
-        name: this.name,
+        title: this.name,
         dueDate: this.dueDate,
       };
       this.name = "";
@@ -162,6 +161,16 @@ export default {
   height: 11.5rem;
   background-color: #F8F3F3;
   margin-top: 0.5rem;
+}
+
+#myGoals{
+  height: 4rem;
+  overflow: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .test_name {

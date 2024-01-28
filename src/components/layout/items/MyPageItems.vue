@@ -1,5 +1,5 @@
 <template>
-    <b-row>
+    <b-row id="subject">
         <b-col cols="8">
             <b-card-text class="test_name" @click="deleteGoal()">{{ title }}</b-card-text>
         </b-col>
@@ -83,4 +83,8 @@ export default {
 </script>
 
 <style>
+#subject:hover{
+    font-weight: bold;
+    background:rgba(0,0,0,0.1);
+}
 </style>

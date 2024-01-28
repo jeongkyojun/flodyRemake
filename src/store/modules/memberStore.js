@@ -3,7 +3,7 @@ import { login } from "@/api/member.js";
 //import { getUserInfo } from "../../api/member";
 //import { get_goals } from "@/api/goal.js";
 import { api } from "@/api";
-import { get_user_schedule_ofDay } from "@/api/schedule";
+// import { get_user_schedule_ofDay } from "@/api/schedule";
 // 회원가입 및 로그인을 수행하는 js파일
 
 //const api = apiInstance();
@@ -15,16 +15,7 @@ const memberStore = {
     isLoginError: null, // 로그인 에러 확인
     userInfo: null,
     selectedDate: null,
-    goals: [
-      {
-        name: "정보처리기사",
-        dueDate: "2022-09-01",
-      },
-      {
-        name: "OPIC",
-        dueDate: "2022-08-30",
-      },
-    ],
+    goals: null,
     todo_list: [],
     todos: [],
   }),
@@ -49,6 +40,9 @@ const memberStore = {
     },
     SET_GOALS: (state, goals) => {
       state.goals = goals;
+    },
+    ADD_GOALS: (state, goals) => {
+      state.goals.push(goals);
     },
     SET_TODO_LIST: (state, todo_list) => {
       state.todo_list = todo_list;
@@ -148,18 +142,23 @@ const memberStore = {
           title: "OPIC",
           dueDate: "2024-08-30",
         },
+        {
+          title: "TOEIC",
+          dueDate: "2024-06-30",
+        },
+        {
+          title: "전기기사",
+          dueDate: "2024-07-30",
+        },
       ];
       commit("SET_GOALS",data);
     },
     addGoals({commit},newGoalData){
-      const data = this.getters.getGoals();
-      console.log(data);
-      data.add(newGoalData);
-      commit("SET_GOALS",data);
+      commit("ADD_GOALS",newGoalData);
     }
     ,
     async set_todo_list({ commit }, selectedDate) {
-      console.log(selectedDate);
+      /*
       await get_user_schedule_ofDay(
         selectedDate,
         (response) => {
@@ -173,9 +172,28 @@ const memberStore = {
           console.log(error);
         },
       );
+      */
+      console.log(selectedDate);
+      const data = [
+        {
+          index: 0,
+          description: 'OPIC 한문장 읽기',
+          isCompleted: false,
+        },{
+          index: 1,
+          description: '정보처리기사 3pg 풀기',
+          isCompleted: false,
+        },{
+          index: 2,
+          description: '전기기사 풀기',
+          isCompleted: false,
+        }
+      ];
+      commit("SET_TODO_LIST", data);
     },
     set_selectedDate({ commit }, selectedDate) {
       commit("SET_SELECTEDDATE", selectedDate);
+      console.log("date : "+selectedDate);
     },
   },
 };

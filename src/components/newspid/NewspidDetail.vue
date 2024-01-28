@@ -56,22 +56,16 @@ export default {
     const store = useStore();
     return { store };
   },
-  mounted() {
-    console.log("Detail-----------------------------");
-    console.log(this.pidNo);
-    console.log(this.author);
-    console.log(this.comments);
-  },
   methods: {
     Delete() {
-      console.log("삭제");
+      alert("삭제");
     },
     Modify() {
-      console.log("수정");
+      alert("수정");
     },
     // 빠져나가는 함수 적용 필요
     Cancel() {
-      console.log("취소");
+      alert("취소");
     },
   },
 }
